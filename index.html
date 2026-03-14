@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEALTHSCAPE – Interactive Financial Decision Simulator</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <section class="education-section">
+
+        <h1>Financial Education Hub</h1>
+        <p class="subtitle">Learn the core concepts of personal finance</p>
+
+        <div class="education-container">
+
+            <div class="card">
+                <i class="fa-solid fa-coins icon sip-icon"></i>
+                <h3>What is SIP?</h3>
+                <p>Systematic Investment Plan (SIP) allows you to invest a fixed amount regularly (e.g., monthly) in
+                    mutual funds. It builds discipline and averages out market volatility.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-chart-pie icon compound-icon"></i>
+                <h3>The Power of Compounding</h3>
+                <p>Compounding is earning returns on both your original investment and past returns. Albert Einstein
+                    called compound interest the 8th wonder of the world.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-arrow-trend-down icon inflation-icon"></i>
+                <h3>Understanding Inflation</h3>
+                <p>Inflation is the increase in prices over time which reduces purchasing power. Investing helps your
+                    money grow faster than inflation.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-clock icon inflation-icon"></i>
+                <h3>Why Start Early?</h3>
+                <p>Time is the most important factor in investing. Starting early allows your money more time to grow
+                    through compounding.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2>WEALTHSCAPE</h2>
+        <p>Empowering financial literacy through interactive simulations.</p>
+
+        <div class="disclaimer-box">
+            <b>EDUCATIONAL DISCLAIMER:</b>
+            This platform is for educational purposes only. It does not provide financial advice,
+            recommend specific mutual funds or investment schemes, nor does it promise or guarantee
+            any returns. All calculators use standard mathematical formulas with assumed constant
+            rates of return to illustrate concepts. Real-market investments are subject to market
+            risks. Please consult a registered financial advisor before making any investment decisions.
+        </div>
+
+        <p class="copyright">© 2026 WEALTHSCAPE Hackathon Project</p>
+    </footer>
+
+    <!-- Modules -->
+    <script src="lifeSimulator.js"></script>
+    <script src="sipSimulator.js"></script>
+    <script src="inflationSimulator.js"></script>
+    <script src="delayImpact.js"></script>
+    <script src="goalPlanner.js"></script>
+    <script src="compoundingVisualizer.js"></script>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
