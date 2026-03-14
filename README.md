@@ -39,27 +39,3 @@ WEALTHSCAPE is a modern, interactive educational fintech web application built t
 *The information provided by WEALTHSCAPE is for educational and informational purposes only and does not constitute financial, investment, or legal advice. The simulations use mathematical formulas to project hypothetical future values based on fixed return rates. Real-world investments are subject to market risks, volatility, and varying returns. WEALTHSCAPE does not promote any specific mutual funds or guarantee any investment returns.*
 
 ---
-
-## Demo Video Script (2-Minutes)
-
-**(0:00 - 0:15) The Problem**
-*Visual: Narrator on screen with the WEALTHSCAPE dashboard blurred in the background.*
-"Personal finance can be incredibly intimidating for beginners. Most calculators are filled with jargon, or they exist merely to sell you a specific mutual fund. People don't just need numbers; they need to understand *how* their behavior impacts their future."
-
-**(0:15 - 0:35) The Solution**
-*Visual: Screen recording of the WEALTHSCAPE Hero section and scrolling down to the feature cards.*
-"Enter WEALTHSCAPE—an interactive financial decision simulator. Our platform is completely browser-based, utilizing modern glassmorphism design and smooth animations to make learning about money engaging, neutral, and educational."
-
-**(0:35 - 1:15) Key Features (Simulators in Action)**
-*Visual: Quick cuts showing sliders moving and charts updating dynamically.*
-"Let's look at the Cost of Delay simulator. By simply dragging a slider, users can instantly see the massive wealth difference between starting now versus waiting five years. 
-Next, our Inflation Reality Check visualizes how a ₹80,000 laptop today will cost significantly more in 10 years, teaching the critical concept of purchasing power. 
-And with the Goal Planner, users can work backward from their dream house to see exactly what they need to save monthly."
-
-**(1:15 - 1:45) Educational Impact**
-*Visual: Highlighting the 'Insight Engine' boxes below the results and exploring the Education Hub.*
-"What sets WEALTHSCAPE apart is our Financial Insight Engine. Every time a user runs a scenario, context-aware insights appear—like explaining how most wealth is generated in the later years of compounding. For complete beginners, our Education Hub breaks down terms like SIP and Compounding without any jargon."
-
-**(1:45 - 2:00) Outro**
-*Visual: Full dashboard view, zooming out.*
-"WEALTHSCAPE isn't just a calculator. It's an experiential learning platform designed to instill better financial behavior. Try the simulations, and see how your financial decisions shape your future today."
