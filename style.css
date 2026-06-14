@@ -1010,39 +1010,40 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .nav-container {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 12px;
         align-items: stretch;
-        gap: 12px;
         padding: 10px 16px;
-        justify-content: center;
+        justify-content: stretch;
+    }
+
+    .nav-links,
+    .logo,
+    .nav-search-wrapper {
+        width: 100%;
     }
 
     .nav-links {
-        width: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
-        order: 2;
     }
 
     .logo {
         font-size: 1.1rem;
-        width: 100%;
         justify-content: center;
-        order: 1;
     }
 
     .nav-search-wrapper {
-        width: 100%;
-        max-width: 100%;
-        order: 3;
-        margin: 0;
-        flex: 1 1 100%;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        min-width: 0;
     }
 
     .nav-search-input {
@@ -1060,11 +1061,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .page-content {
-        padding-top: 160px;
+        padding-top: 180px;
     }
 
     .hero-section {
-        padding: 80px 16px 40px;
+        padding: 100px 16px 40px;
         min-height: 70vh;
     }
 
