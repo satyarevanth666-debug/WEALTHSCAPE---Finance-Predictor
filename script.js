@@ -270,9 +270,15 @@ function attachEventListeners() {
             window.currentChart = null;
         }
 
-        // Render HTML
-        moduleContainer.innerHTML = mod.render();
-        moduleContainer.insertAdjacentHTML('beforeend', renderCalculatorInfo(moduleId));
+// Render HTML in separate panels for calculator content and calculator details
+            moduleContainer.innerHTML = `
+                <div class="module-panel module-main">
+                    ${mod.render()}
+                </div>
+                <div class="module-panel module-details">
+                    ${renderCalculatorInfo(moduleId)}
+                </div>
+            `;
         // Initialize JS logic + charts
         mod.init();
 

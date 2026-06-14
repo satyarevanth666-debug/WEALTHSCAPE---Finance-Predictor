@@ -527,6 +527,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .calculator-details-card h3 {
@@ -642,25 +644,35 @@ input[type="range"]::-webkit-slider-thumb:hover {
     gap: 30px;
     align-items: start;
     width: 100%;
+    min-width: 0;
 }
 
 .simulator-grid > *,
 .col-form,
 .col-results,
-.chart-col {
+.chart-col,
+.module-panel {
     min-width: 0;
 }
 
 .col-form,
 .col-results,
-.chart-col {
+.chart-col,
+.module-panel {
     width: 100%;
+}
+
+.module-panel {
+    box-sizing: border-box;
 }
 
 @media (min-width: 992px) {
     .simulator-grid {
         /* On large screens, Input form | Results + Insight | Chart */
-        grid-template-columns: 320px 280px 1fr;
+        grid-template-columns: minmax(0, 320px) minmax(0, 280px) minmax(0, 1fr);
+    }
+    .module-panel {
+        min-width: 0;
     }
 }
 
