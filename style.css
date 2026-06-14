@@ -633,7 +633,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 @media (min-width: 992px) {
     .dashboard-content {
-        grid-template-columns: minmax(0, 350px) minmax(0, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
@@ -669,7 +669,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 @media (min-width: 992px) {
     .simulator-grid {
         /* On large screens, Input form and results side by side, chart below */
-        grid-template-columns: minmax(0, 320px) minmax(0, 280px);
+        grid-template-columns: minmax(280px, 380px) minmax(240px, 320px);
+        justify-content: start;
     }
     .chart-col {
         grid-column: 1 / -1;
@@ -700,6 +701,29 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .module-details {
     padding-top: 0;
+}
+
+.module-details .glass-card {
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .module-details .glass-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .module-details .glass-card > * {
+        grid-column: 1 / -1;
+    }
+
+    .module-details .glass-card h3,
+    .module-details .glass-card p,
+    .module-details .glass-card ul {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
