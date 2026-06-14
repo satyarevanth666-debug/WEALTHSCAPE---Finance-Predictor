@@ -1319,11 +1319,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 20px 40px;
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
     }
 
     .chart-container {
-        height: 300px;
+        height: 250px;
     }
 }
