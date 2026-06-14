@@ -1340,3 +1340,27 @@ input[type="range"]::-webkit-slider-thumb:hover {
         height: 250px;
     }
 }
+
+@media(max-width:980px){
+  .nav-links{flex-wrap:wrap;justify-content:center;margin-left:0;gap:12px}
+  .nav-actions{justify-content:flex-end}
+  .search-wrap{max-width:none}
+}
+@media(max-width:920px){
+  .hero-search{flex-direction:column;align-items:stretch}
+  .hero-actions{flex-direction:column;gap:12px}
+}
+@media(max-width:720px){
+  .rail{grid-template-columns:1fr}
+  .navbar{flex-wrap:wrap;gap:10px}
+  .nav-links{order:2;width:100%;justify-content:center}
+  .nav-actions{order:3;width:100%}
+  .search-wrap{max-width:none}
+  .hero-inner{padding:32px 18px}
+  .hero-stats{gap:22px}
+  .modal-body .row{grid-template-columns:1fr}
+  .sci-grid{grid-template-columns:repeat(4,1fr)}
+  .foot-actions{grid-template-columns:1fr}
+  .guide-content{grid-template-columns:1fr}
+  .formulas-grid{grid-template-columns:1fr}
+}
