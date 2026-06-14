@@ -270,13 +270,13 @@ function attachEventListeners() {
             window.currentChart = null;
         }
 
-// Render HTML in separate panels for calculator content and calculator details
+// Render HTML in separate panels for calculator details and calculator content
             moduleContainer.innerHTML = `
-                <div class="module-panel module-main">
-                    ${mod.render()}
-                </div>
                 <div class="module-panel module-details">
                     ${renderCalculatorInfo(moduleId)}
+                </div>
+                <div class="module-panel module-main">
+                    ${mod.render()}
                 </div>
             `;
         // Initialize JS logic + charts

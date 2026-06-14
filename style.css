@@ -676,6 +676,29 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 }
 
+#module-container {
+    display: grid;
+    gap: 30px;
+    width: 100%;
+    min-width: 0;
+}
+
+.module-panel {
+    width: 100%;
+    min-width: 0;
+    display: block;
+}
+
+.module-main,
+.module-details {
+    width: 100%;
+    min-width: 0;
+}
+
+.module-details {
+    padding-top: 0;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .simulator-grid {
         /* On medium screens, Input form | Results + Chart next to it (with results stacked) */
@@ -725,6 +748,20 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .chart-container {
         min-height: 280px;
         height: auto;
+    }
+
+    #module-container {
+        display: grid;
+        gap: 24px;
+    }
+
+    .module-main,
+    .module-details {
+        width: 100%;
+    }
+
+    .module-details {
+        margin-top: 0;
     }
 }
 
