@@ -668,8 +668,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 @media (min-width: 992px) {
     .simulator-grid {
-        /* On large screens, Input form | Results + Insight | Chart */
-        grid-template-columns: minmax(0, 320px) minmax(0, 280px) minmax(0, 1fr);
+        /* On large screens, Input form and results side by side, chart below */
+        grid-template-columns: minmax(0, 320px) minmax(0, 280px);
+    }
+    .chart-col {
+        grid-column: 1 / -1;
     }
     .module-panel {
         min-width: 0;
