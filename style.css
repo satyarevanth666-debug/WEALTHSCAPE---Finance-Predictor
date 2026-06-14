@@ -743,43 +743,172 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 @media (max-width: 767px) {
-    .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+    body {
+        font-size: 15px;
     }
 
-    .simulator-grid {
-        grid-template-columns: 1fr;
+    .container {
+        padding: 0 16px;
     }
 
-    .calculator-details-card,
-    .glass-card {
-        padding: 24px 18px;
+    .navbar {
+        padding: 10px 12px;
     }
 
     .nav-container {
         flex-wrap: wrap;
         gap: 12px;
+        padding: 10px 16px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
     }
 
     .nav-search-wrapper {
         width: 100%;
         max-width: 100%;
+        order: 3;
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .nav-search-input {
+        min-width: auto;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .hero-section {
+        padding: 80px 16px 40px;
+        min-height: 70vh;
     }
 
     .hero-glass {
-        padding: 36px 20px;
+        padding: 32px 18px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 16px 0 40px;
+    }
+
+    .feature-card {
+        padding: 24px 16px;
+    }
+
+    .feature-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+    }
+
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+        font-size: 0.9rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+    .back-btn {
+        font-size: 0.95rem;
+        padding: 8px 0;
+    }
+
+    .back-text {
+        display: inline;
+    }
+
+    .simulator-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .calculator-details-card,
+    .glass-card {
+        padding: 20px 16px;
+    }
+
+    .calculator-details-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .calculator-details-card p,
+    .calculator-details-card li {
+        font-size: 0.95rem;
+    }
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+
+    .input-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .input-control {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+
+    .result-box {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .result-label {
+        font-size: 0.85rem;
+    }
+
+    .result-value {
+        font-size: 1.5rem;
     }
 
     .chart-container {
-        min-height: 280px;
+        min-height: 240px;
         height: auto;
+        padding: 16px;
     }
 
     #module-container {
         display: grid;
-        gap: 24px;
+        gap: 20px;
     }
 
     .module-main,
@@ -789,6 +918,88 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     .module-details {
         margin-top: 0;
+    }
+
+    .page-content {
+        padding-top: 70px;
+    }
+
+    .page-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .faq-list li {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .navbar {
+        padding: 8px 8px;
+    }
+
+    .nav-container {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .hero-section {
+        padding: 60px 12px 30px;
+    }
+
+    .hero-glass {
+        padding: 24px 16px;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        padding: 9px 16px;
+        font-size: 0.9rem;
+    }
+
+    .feature-card {
+        padding: 20px 14px;
+    }
+
+    .feature-icon-wrapper {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 12px;
+    }
+
+    .feature-icon {
+        font-size: 1.3rem;
+    }
+
+    .calculator-details-card,
+    .glass-card {
+        padding: 18px 14px;
+    }
+
+    .input-control {
+        padding: 9px 10px;
+        font-size: 14px;
+    }
+
+    .chart-container {
+        min-height: 200px;
+        padding: 12px;
     }
 }
 
