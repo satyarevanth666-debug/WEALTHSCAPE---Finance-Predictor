@@ -140,6 +140,7 @@ function renderLayout(app) {
                 </div>
                 <div class="nav-search-wrapper">
                     <input id="calculator-search" class="input-control nav-search-input" type="search" placeholder="Search calculators across WEALTHSCAPE...">
+                    <div id="search-empty" class="search-empty muted" style="display:none;">No calculators match your search.</div>
                 </div>
             </div>
         </nav>
@@ -255,6 +256,12 @@ function attachEventListeners() {
             toolsHeader.style.display = 'none';
             featuresSection.style.display = 'none';
             dashboardView.style.display = 'block';
+
+            // Destroy any existing chart before replacing module content.
+            if (window.currentChart) {
+                window.currentChart.destroy();
+                window.currentChart = null;
+            }
 
             // Render HTML
             moduleContainer.innerHTML = mod.render();

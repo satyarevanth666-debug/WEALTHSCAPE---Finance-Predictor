@@ -81,10 +81,21 @@ const calculatorDetails = {
 function renderCalculatorInfo(calculatorId) {
     const details = calculatorDetails[calculatorId];
     if (!details) {
-        return `<div class="glass-card calculator-details-card">
-            <h3 class="mb-2">Calculator Notes</h3>
-            <p class="muted">Detailed content for this calculator is coming soon.</p>
-        </div>`;
+        const module = window.modulesData?.find(m => m.id === calculatorId);
+        const title = module?.title || 'Calculator Details';
+        const description = module?.desc || 'This calculator helps you model a financial scenario using standard inputs.';
+        return `
+    <div class="glass-card calculator-details-card">
+        <h3 class="mb-3">${title}</h3>
+        <p>${description}</p>
+
+        <h3 class="mb-3">How to use this tool</h3>
+        <p>Enter the input values in the form on the left. The results update automatically as you change the numbers, giving you a fast estimate of the outcome.</p>
+
+        <h3 class="mb-3">Why this matters</h3>
+        <p>This tool is designed to give you clear, practical feedback so you can compare different financial choices and make better decisions.</p>
+    </div>
+    `;
     }
     return `
     <div class="glass-card calculator-details-card">

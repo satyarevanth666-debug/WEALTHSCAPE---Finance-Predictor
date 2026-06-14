@@ -620,11 +620,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+}
+
+.dashboard-content > * {
+    min-width: 0;
 }
 
 @media (min-width: 992px) {
     .dashboard-content {
-        grid-template-columns: 350px 1fr;
+        grid-template-columns: minmax(0, 350px) minmax(0, 1fr);
     }
 }
 
@@ -651,6 +658,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     .chart-col {
         grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 767px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .simulator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-details-card,
+    .glass-card {
+        padding: 24px 18px;
     }
 }
 
