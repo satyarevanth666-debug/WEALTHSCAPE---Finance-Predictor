@@ -475,12 +475,79 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 20px 0 60px;
 }
 
+.search-bar-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 20px;
+}
+
+.search-input {
+    width: min(760px, 100%);
+    padding: 14px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #F8FAFC;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgba(248, 250, 252, 0.65);
+}
+
+.search-empty {
+    width: 100%;
+    text-align: center;
+    color: rgba(148, 163, 184, 0.95);
+}
+
 .feature-card {
     cursor: pointer;
     text-align: left;
     padding: 35px 30px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calculator-details-card {
+    padding: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+.calculator-details-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #E2E8F0;
+}
+
+.calculator-details-card p,
+.calculator-details-card li,
+.calculator-details-card code {
+    color: #CBD5E1;
+    line-height: 1.75;
+}
+
+.faq-list {
+    margin: 0;
+    padding-left: 1.35rem;
+    color: #CBD5E1;
+}
+
+.faq-list li {
+    margin-bottom: 0.8rem;
+}
+
+.calculator-details-card code {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(148, 163, 184, 0.1);
+    color: #E2E8F0;
 }
 
 .feature-icon-wrapper {

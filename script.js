@@ -141,6 +141,11 @@ function renderLayout(app) {
             </div>
         </nav>
 
+        <div class="search-bar-panel top-search-bar">
+            <input id="calculator-search" class="input-control search-input" type="search" placeholder="Search calculators across WEALTHSCAPE...">
+            <div id="search-empty" class="search-empty muted" style="display:none;">No calculators match your search.</div>
+        </div>
+
         <header class="hero-section" id="hero-view">
             <div class="hero-content glass-card hero-glass">
                 <div class="badge mb-2">Interactive Fintech Simulator</div>
@@ -200,6 +205,27 @@ function attachEventListeners() {
         openModule('life');
     });
 
+    const searchInput = document.getElementById('calculator-search');
+    const searchEmpty = document.getElementById('search-empty');
+
+    function filterCalculators() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            const title = card.querySelector('.feature-title').textContent.toLowerCase();
+            const desc = card.querySelector('.feature-desc').textContent.toLowerCase();
+            const matches = !query || title.includes(query) || desc.includes(query);
+            card.style.display = matches ? 'block' : 'none';
+            if (matches) visibleCount += 1;
+        });
+
+        searchEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterCalculators);
+    filterCalculators();
+
     document.querySelectorAll('.feature-card').forEach(card => {
         card.addEventListener('click', (e) => {
             const moduleId = e.currentTarget.getAttribute('data-module');
@@ -234,6 +260,7 @@ function attachEventListeners() {
 
             // Render HTML
             moduleContainer.innerHTML = mod.render();
+            moduleContainer.insertAdjacentHTML('beforeend', renderCalculatorInfo(moduleId));
             // Initialize JS logic + charts
             mod.init();
 

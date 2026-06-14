@@ -3,6 +3,114 @@
 
 // --- From additionalCalculators.js (EMI, Retirement, Tax, Emergency, Investment Return) ---
 
+const calculatorDetails = {
+    mutual_fund_returns: {
+        title: 'Mutual Fund Returns',
+        description: 'Estimate how a mutual fund investment grows over time by compounding returns each year.',
+        formula: 'Future Value = Invested Amount × (1 + Annual Return)^Years',
+        explanation: `This calculator assumes that the expected annual return is reinvested in the fund each year. The value grows by the same percentage every year, so the final corpus is the invested amount multiplied by the compound factor. Use this formula to plan long-term mutual fund goals and compare expected portfolios.`,
+        example: `If you invest ₹100,000 and expect 12% annual return for 10 years, the corpus becomes ₹100,000 × (1.12)^10 = ₹310,584. Your gain is ₹210,584 on the original investment.`,
+        faq: [`What happens if returns change year to year? This calculator uses a fixed expected return, so for variable returns use a more detailed SIP or historical return model.`, `Can I use this for equity mutual funds? Yes; equities are typically modeled with expected annual return assumptions, though actual returns can be higher or lower.`, `Is the gain after tax? No; the output is pre-tax. Adjust for capital gains tax if you plan holdings under 1 year or 3 years for equity.`, `Does this include fees? No; it does not include management fees or expense ratio, so use a slightly lower return assumption if you want a conservative estimate.`],
+        useCases: `Use this to forecast retirement savings, long-term corpus targets, or compare two mutual funds with different expected annual return rates. It helps when you want quick visibility into how a fund performs over a decade based on assumed growth.`
+    },
+    swp: {
+        title: 'SWP Calculator',
+        description: 'Calculate how much you can withdraw each year or month from a portfolio while keeping the capital intact based on an expected return.',
+        formula: 'Annual Withdrawal = Portfolio Value × Expected Return',
+        explanation: `This calculator assumes a constant return on the portfolio and that you withdraw only the expected return portion. If the portfolio returns the forecasted percentage each year, the original capital stays invested. Use this for safe withdrawal planning from a retirement corpus or dividend-style income.`,
+        example: `A corpus of ₹50,00,000 earning 8% per year yields a withdrawal amount of ₹4,00,000 annually or roughly ₹33,333 per month.`,
+        faq: [`Is this a safe withdrawal rate? It assumes the portfolio returns at least the expected rate. Use conservative estimates and update the return if you want a margin of safety.`, `Does it include inflation? No; inflation is not included. To maintain purchasing power, add inflation above the expected return or increase the corpus.`, `What if I withdraw more than the annual return? The capital can shrink, so only withdraw the expected return if you want to preserve principal.`, `Can I use this for retirement income? Yes, as an estimate for income from a base portfolio, assuming returns stay stable.`],
+        useCases: `Ideal for investors planning annual income from a large corpus, retired individuals using the portfolio to fund living expenses, or advisors estimating a withdrawal budget without selling capital.`
+    },
+    xirr: {
+        title: 'XIRR Calculator',
+        description: 'Estimate the annualized return for a series of uneven cashflows spread over multiple years.',
+        formula: 'Find rate r such that NPV = Σ(Cashflow_t / (1 + r)^t) = 0',
+        explanation: `XIRR solves for the internal rate of return when investments and withdrawals happen at different times. Instead of using equal periods, it computes the single annual rate that makes the present value of all cashflows zero. Use this for real-world projects, equity investments, and portfolios with multiple cash injections or redemptions.`,
+        example: `If you invest ₹100,000 today and receive ₹20,000, ₹25,000, ₹30,000 and ₹35,000 over the next four years, XIRR finds the effective return that equates the series of cashflows. In this case, it is roughly 9.76%.`,
+        faq: [`What is the difference between IRR and XIRR? IRR assumes equal periods; XIRR handles irregular cashflows and varying dates.`, `Does this require dates? In this tool, we assume one-year intervals for simplicity, but a full XIRR model would use exact dates.`, `What if cashflows are all negative? XIRR cannot be computed meaningfully unless you have at least one positive and one negative cashflow.`, `Can XIRR be greater than simple average? Yes, because it accounts for timing and compounding of cashflows.`],
+        useCases: `Finance professionals use XIRR for portfolio performance measurement, private equity, project evaluation, and any investment where cashflows are not uniform.`
+    },
+    dividend_yield: {
+        title: 'Dividend Yield Calculator',
+        description: 'Calculate the income yield generated by a stock relative to its market price.',
+        formula: 'Dividend Yield (%) = (Dividend Per Share / Share Price) × 100',
+        explanation: `Dividend yield helps investors compare income performance between dividend-paying stocks and fixed-income investments. It shows the percentage of the current share price returned to shareholders through dividends each year. Use it to screen stocks for income generation or benchmark against bank deposits.`,
+        example: `If a company pays ₹12.50 per share annually and the share trades at ₹250, the dividend yield is 5%.`,
+        faq: [`Does a high yield mean a good investment? Not always. A very high yield can signal risk or a falling share price.`, `Does this account for dividend frequency? This calculator assumes the annual dividend total per share. For quarterly dividends, sum the four payouts.`, `Can dividend yield change? Yes, it changes when the share price moves or when the company changes its dividend.`, `Is dividend yield the same as return? No, it only measures income, not capital gains or total return.`],
+        useCases: `Best for income-focused investors comparing dividend-paying equities, retirees seeking cash flow, and anyone evaluating whether dividends justify the current stock price.`
+    },
+    stock_avg: {
+        title: 'Stock Average Calculator',
+        description: 'Determine the average cost per share for multiple stock purchases at different prices.',
+        formula: 'Average Cost = Total Cost / Total Shares',
+        explanation: `This calculator helps you recompute your average purchase price after buying a stock in different lots. It is essential for tracking break-even levels and managing positions during market volatility.`,
+        example: `Buying 100 shares at ₹150 and another 50 shares at ₹180 gives a total cost of ₹25,500. The weighted average cost is ₹170 per share.`,
+        faq: [`What if I buy more than two lots? Add the additional quantities and costs to the totals, then divide.`, `Does it include brokerage? No; add brokerage to each lot cost if you want the true invested amount.`, `Should I average down? Averaging down only lowers average cost, but it does not guarantee profit. Use it with risk management.`, `Is this the same as portfolio return? No, this is a cost basis measure only.`],
+        useCases: `Useful for tracking stock positions across multiple purchases, calculating break-even price, and comparing purchase strategies.`
+    },
+    risk_reward: {
+        title: 'Risk-Reward Ratio Calculator',
+        description: 'Measure the relative reward compared to risk for a trade or investment entry point.',
+        formula: 'Reward/Risk = (Target Price - Entry Price) / (Entry Price - Stop Loss)',
+        explanation: `This ratio shows how much upside you are chasing for every rupee you risk. A higher ratio means the potential profit is larger relative to the loss, which is a key factor in disciplined trading and portfolio risk management.`,
+        example: `If you enter at ₹100, target ₹130 and place stop loss at ₹90, the reward is ₹30 and the risk is ₹10. The ratio is 3.0, meaning you seek three times the reward for each unit of risk.`,
+        faq: [`Should every trade have a high ratio? A ratio above 2:1 is often preferred, but success also depends on win rate and position sizing.`, `Does this guarantee profit? No, it only defines risk tolerance and reward potential.`, `What if stop loss is above entry? Then the calculation is invalid because the position would not be a long trade.`, `Can this be used for both long and short trades? Yes, apply the formula to the appropriate target and stop levels for each direction.`],
+        useCases: `Traders use this to screen trade setups, choose better entries, and combine risk-reward with win probability to build robust strategies.`
+    },
+    sharpe: {
+        title: 'Sharpe Ratio Calculator',
+        description: 'Assess risk-adjusted return by comparing excess return to volatility.',
+        formula: 'Sharpe Ratio = (Portfolio Return - Risk-free Rate) / Volatility',
+        explanation: `The Sharpe ratio shows how much return you earn for each unit of risk taken. It is useful for comparing investment options with different return profiles and volatilities. A higher ratio indicates more efficient return per unit of risk.`,
+        example: `A portfolio returning 12% with 4% risk-free rate and 15% volatility yields a Sharpe ratio of (12 - 4) / 15 = 0.53.`,
+        faq: [`What is a good Sharpe ratio? Generally, above 1.0 is considered good, while below 0 may indicate poor risk-adjusted performance.`, `Does it work for negative returns? Yes, but the interpretation changes: a negative Sharpe means poor risk-adjusted compensation.`, `Is volatility always measured annually? Yes, standard Sharpe uses annualized volatility.`, `Can Sharpe compare different asset classes? It can, but only if returns and volatility are measured consistently.`],
+        useCases: `Ideal for evaluating mutual funds, portfolios, and strategies, or comparing the risk-adjusted performance of different investment choices.`
+    },
+    fd: {
+        title: 'Fixed Deposit Calculator',
+        description: 'Compute the maturity amount of a fixed deposit using compound interest.',
+        formula: 'Maturity Value = Principal × (1 + Rate)^Years',
+        explanation: `Fixed deposits grow at a fixed annual interest rate. This calculator compounds the interest each year and gives the amount you receive at maturity. Use it to plan savings for fixed-income goals and compare bank offer rates.`,
+        example: `A ₹2,00,000 deposit at 7% compound interest for 5 years gives ₹2,80,710 at maturity.`,
+        faq: [`Is this based on annual compounding? Yes; if the bank compounds quarterly or monthly, the actual value may differ slightly.`, `Does it include taxes? No; this is pre-tax. Deduct tax on interest earned if applicable.`, `Can I withdraw before maturity? Early withdrawal may reduce interest or invoke penalties.`, `Does the rate remain the same? Most FDs have a fixed rate, but interest may vary if you choose a fluctuating scheme.`],
+        useCases: `Use this for planning safe savings goals, comparing FD tenures, and estimating the corpus needed for short- to medium-term objectives.`
+    }
+};
+
+function renderCalculatorInfo(calculatorId) {
+    const details = calculatorDetails[calculatorId];
+    if (!details) {
+        return `<div class="glass-card calculator-details-card">
+            <h3 class="mb-2">Calculator Notes</h3>
+            <p class="muted">Detailed content for this calculator is coming soon.</p>
+        </div>`;
+    }
+    return `
+    <div class="glass-card calculator-details-card">
+        <h3 class="mb-3">What this calculator does</h3>
+        <p>${details.description}</p>
+
+        <h3 class="mb-3">Formula used</h3>
+        <p><code>${details.formula}</code></p>
+
+        <h3 class="mb-3">Step-by-step explanation</h3>
+        <p>${details.explanation}</p>
+
+        <h3 class="mb-3">Worked example</h3>
+        <p>${details.example}</p>
+
+        <h3 class="mb-3">Frequently Asked Questions</h3>
+        <ul class="faq-list">
+            ${details.faq.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+
+        <h3 class="mb-3">Use cases</h3>
+        <p>${details.useCases}</p>
+    </div>
+    `;
+}
+
 function renderEmiCalculator() {
     return `
         <div class="glass-card">
