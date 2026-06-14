@@ -337,6 +337,74 @@ input[type="range"]::-webkit-slider-thumb:hover {
     color: var(--text-main);
 }
 
+.nav-items {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.page-content {
+    padding-top: 110px;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-section {
+    margin-top: 60px;
+}
+
+.page-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-header h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 0.75rem;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    max-width: 760px;
+    line-height: 1.8;
+}
+
+.info-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.content-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 32px;
+}
+
+.content-card h3 {
+    margin-bottom: 16px;
+}
+
+.content-card p {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.contact-form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
 /* Main Layout Setup */
 .hero-section {
     padding: 140px 20px 60px;
@@ -578,6 +646,23 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .footer h2 {
     margin-bottom: 10px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px auto 0;
+}
+
+.footer-nav .nav-link {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.footer-nav .nav-link:hover {
+    color: var(--text-main);
 }
 
 .disclaimer-box {
