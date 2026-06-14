@@ -32,6 +32,13 @@ const modulesData = [
     { id: 'tax', title: 'Tax Savings Calculator', icon: 'fa-receipt', desc: 'See how investments under tax-saving sections reduce your taxable income.', render: renderTaxSavingsCalculator, init: initTaxSavingsCalculator },
     { id: 'emergency', title: 'Emergency Fund Planner', icon: 'fa-first-aid', desc: 'Calculate how much cash cushion you need for 6-12 months of expenses.', render: renderEmergencyFundCalculator, init: initEmergencyFundCalculator },
     { id: 'investment', title: 'Investment Return Calculator', icon: 'fa-hand-holding-dollar', desc: 'Project your long-term wealth from savings and investment returns.', render: renderInvestmentReturnCalculator, init: initInvestmentReturnCalculator },
+    { id: 'sip_calc', title: 'SIP Calculator', icon: 'fa-coins', desc: 'Systematic Investment Plan calculator.', render: renderSipCalculator, init: initSipCalculator },
+    { id: 'lumpsum', title: 'Lumpsum Calculator', icon: 'fa-wallet', desc: 'Lumpsum investment growth calculator.', render: renderLumpsumCalculator, init: initLumpsumCalculator },
+    { id: 'compound', title: 'Compound Interest Calculator', icon: 'fa-sparkles', desc: 'Compound interest with different compounding frequencies.', render: renderCompoundInterestCalculator, init: initCompoundInterestCalculator },
+    { id: 'cagr', title: 'CAGR Calculator', icon: 'fa-chart-simple', desc: 'Compound Annual Growth Rate.', render: renderCagrCalculator, init: initCagrCalculator },
+    { id: 'roi_calc', title: 'ROI Calculator', icon: 'fa-percent', desc: 'Return on investment.', render: renderRoiCalculator, init: initRoiCalculator },
+    { id: 'fv_pv', title: 'Future & Present Value', icon: 'fa-clock-rotate-left', desc: 'Compute FV and PV for lump sums.', render: renderFvPvCalculator, init: initFvPvCalculator },
+    { id: 'inflation_calc', title: 'Inflation Calculator', icon: 'fa-temperature-arrow-up', desc: 'Price change due to inflation.', render: renderInflationCalculator, init: initInflationCalculator },
 ];
 
 function renderLayout(app) {
