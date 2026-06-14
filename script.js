@@ -198,6 +198,7 @@ function attachEventListeners() {
     const featuresSection = document.getElementById('features-section');
     const dashboardView = document.getElementById('dashboard-view');
     const moduleContainer = document.getElementById('module-container');
+    const staticPageContent = document.querySelector('.page-content');
 
     document.getElementById('start-simulation-btn').addEventListener('click', () => {
         // Open the first module
@@ -239,6 +240,9 @@ function attachEventListeners() {
         heroView.style.display = 'flex';
         toolsHeader.style.display = 'block';
         featuresSection.style.display = 'grid';
+        if (staticPageContent) {
+            staticPageContent.style.display = '';
+        }
 
         // Destroy existing chart if any to avoid memory leaks
         if (window.currentChart) {
@@ -256,18 +260,21 @@ function attachEventListeners() {
             toolsHeader.style.display = 'none';
             featuresSection.style.display = 'none';
             dashboardView.style.display = 'block';
+        if (staticPageContent) {
+            staticPageContent.style.display = 'none';
+        }
 
-            // Destroy any existing chart before replacing module content.
-            if (window.currentChart) {
-                window.currentChart.destroy();
-                window.currentChart = null;
-            }
+        // Destroy any existing chart before replacing module content.
+        if (window.currentChart) {
+            window.currentChart.destroy();
+            window.currentChart = null;
+        }
 
-            // Render HTML
-            moduleContainer.innerHTML = mod.render();
-            moduleContainer.insertAdjacentHTML('beforeend', renderCalculatorInfo(moduleId));
-            // Initialize JS logic + charts
-            mod.init();
+        // Render HTML
+        moduleContainer.innerHTML = mod.render();
+        moduleContainer.insertAdjacentHTML('beforeend', renderCalculatorInfo(moduleId));
+        // Initialize JS logic + charts
+        mod.init();
 
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
