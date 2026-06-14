@@ -1542,6 +1542,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .page-content {
         padding: 30px 16px;
     }
+    .search-wrap{max-width:none}
 
     .education-section {
         padding: 32px 0;
@@ -1666,6 +1667,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .page-content {
         padding: 24px 12px;
     }
+    .search-wrap{max-width:none}
 
     .hero-section {
         padding: 70px 12px 32px;
