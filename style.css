@@ -258,6 +258,224 @@ input[type="range"]::-webkit-slider-thumb:hover {
     pointer-events: none;
 }
 
+/* Page Layout */
+.page-content {
+    padding: 80px 0;
+}
+
+.education-section {
+    padding: 40px 0;
+}
+
+.education-section h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.education-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    padding: 28px 24px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background var(--transition-speed) ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
+}
+
+.card .icon {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    line-height: 1.75;
+}
+
+.footer {
+    padding: 60px 0 40px;
+    color: var(--text-muted);
+}
+
+.footer h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.8rem;
+}
+
+.footer p {
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.footer-nav .nav-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-nav .nav-link:hover {
+    color: var(--accent);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 2rem;
+}
+
+.footer-grid h4 {
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    font-size: 1.05rem;
+}
+
+.footer-grid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-grid ul li,
+.footer-grid ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.footer-grid ul li a:hover {
+    color: var(--accent);
+}
+
+.disclaimer-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 24px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+}
+
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .education-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .page-content {
+        padding: 40px 0;
+    }
+
+    .education-section {
+        padding: 30px 0;
+    }
+
+    .education-section h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.98rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .footer {
+        padding: 36px 0 24px;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .disclaimer-box {
+        padding: 18px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+    .card .icon {
+        font-size: 2rem;
+    }
+
+    .education-section h1 {
+        font-size: 1.85rem;
+    }
+
+    .footer h2 {
+        font-size: 1.5rem;
+    }
+}
+
 .orb {
     position: absolute;
     border-radius: 50%;
@@ -1318,7 +1536,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* Responsive */
-@media (max-width: 420px) {
+@media (max-width: 768px) {
     .calculator-grid {
         grid-template-columns: 1fr;
     }
