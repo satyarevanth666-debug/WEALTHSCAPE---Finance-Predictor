@@ -1010,22 +1010,32 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .nav-container {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
         gap: 12px;
         padding: 10px 16px;
         justify-content: center;
     }
 
+    .nav-links {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
     .logo {
         font-size: 1.1rem;
+        width: 100%;
+        justify-content: center;
     }
 
     .nav-search-wrapper {
         width: 100%;
         max-width: 100%;
         order: 3;
-        margin-left: 0;
-        margin-top: 8px;
+        margin: 0;
         flex: 1 1 100%;
         display: flex;
         flex-direction: column;
@@ -1034,7 +1044,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     .nav-search-input {
         width: 100%;
-        min-width: auto;
+        min-width: 0;
         padding: 12px 14px;
         font-size: 14px;
     }
