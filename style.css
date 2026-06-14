@@ -249,10 +249,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
 /* Background Orbs */
 .bg-orbs {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     z-index: -1;
     pointer-events: none;
@@ -260,10 +259,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Page Layout */
 .page-content {
-    padding: 80px 0;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 80px 20px;
 }
 
 .education-section {
+    width: 100%;
     padding: 40px 0;
 }
 
@@ -271,34 +273,37 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-size: clamp(2rem, 4vw, 3.5rem);
     letter-spacing: -0.04em;
     margin-bottom: 1rem;
+    line-height: 1.05;
 }
 
 .subtitle {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto 2.5rem;
     color: var(--text-muted);
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.75;
 }
 
 .education-container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .card {
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(15, 23, 42, 0.92);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
     padding: 28px 24px;
     transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background var(--transition-speed) ease;
 }
 
 .card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
 }
 
 .card .icon {
@@ -318,7 +323,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .footer {
-    padding: 60px 0 40px;
+    width: 100%;
+    padding: 60px 20px 40px;
     color: var(--text-muted);
 }
 
@@ -330,6 +336,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .footer p {
     max-width: 700px;
     margin-bottom: 1.5rem;
+    line-height: 1.8;
 }
 
 .footer-nav {
@@ -345,6 +352,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     text-decoration: none;
     font-size: 0.95rem;
     transition: color var(--transition-speed) ease;
+    white-space: nowrap;
 }
 
 .footer-nav .nav-link:hover {
@@ -384,11 +392,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .disclaimer-box {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 18px;
     padding: 24px;
-    line-height: 1.7;
+    line-height: 1.75;
     font-size: 0.95rem;
     margin-bottom: 1.75rem;
 }
@@ -409,17 +417,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 }
 
+@media (max-width: 800px) {
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 6px;
+    }
+
+    .footer-nav {
+        gap: 10px 12px;
+    }
+}
+
 @media (max-width: 680px) {
     body {
         background-attachment: scroll;
     }
 
-    .container {
-        padding: 0 16px;
-    }
-
     .page-content {
-        padding: 40px 0;
+        padding: 40px 16px;
     }
 
     .education-section {
@@ -435,11 +450,11 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .card {
-        padding: 20px;
+        padding: 22px 18px;
     }
 
     .footer {
-        padding: 36px 0 24px;
+        padding: 36px 16px 24px;
     }
 
     .footer-nav {
@@ -449,6 +464,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 
     .disclaimer-box {
@@ -457,14 +473,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .btn {
         width: 100%;
         padding: 14px 20px;
     }
 
     .card .icon {
-        font-size: 2rem;
+        font-size: 1.9rem;
     }
 
     .education-section h1 {
@@ -472,7 +488,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .footer h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .education-section h1 {
+        font-size: 1.7rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        padding: 20px 16px;
     }
 }
 
