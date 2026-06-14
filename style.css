@@ -25,6 +25,9 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
 }
 
 body {
@@ -35,6 +38,9 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 
 h1,
@@ -1007,6 +1013,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
         flex-wrap: wrap;
         gap: 12px;
         padding: 10px 16px;
+        justify-content: center;
     }
 
     .logo {
@@ -1019,12 +1026,24 @@ input[type="range"]::-webkit-slider-thumb:hover {
         order: 3;
         margin-left: 0;
         margin-top: 8px;
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .nav-search-input {
+        width: 100%;
         min-width: auto;
-        padding: 10px 12px;
+        padding: 12px 14px;
         font-size: 14px;
+    }
+
+    .search-empty {
+        margin: 0;
+        padding: 4px 0;
+        font-size: 0.85rem;
+        text-align: left;
     }
 
     .hero-section {
