@@ -1509,102 +1509,168 @@ input[type="range"]::-webkit-slider-thumb:hover {
     opacity: 0.7;
 }
 
-.education-section {
-    text-align: center;
-    padding: 60px 20px;
+@media (max-width: 1024px) {
+    .education-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-.subtitle {
-    color: #aaa;
-    margin-bottom: 40px;
-}
-
-.education-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.card {
-    background: linear-gradient(145deg, #1e293b, #0f172a);
-    padding: 25px;
-    border-radius: 12px;
-    color: white;
-    text-align: left;
-    transition: 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.icon {
-    font-size: 42px;
-    margin-bottom: 12px;
-    filter: drop-shadow(0px 0px 8px rgba(0, 255, 150, 0.6));
-    color: #00ff9d;
-    margin-bottom: 12px;
-}
-
-.sip-icon {
-    color: #00ff9c;
-}
-
-.compound-icon {
-    color: #00bfff;
-}
-
-.inflation-icon {
-    color: #ff7a18;
-}
-
-.time-icon {
-    color: #00e5ff;
-}
-
-.card h3 {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 0px 0px 8px rgba(0, 255, 150, 0.6);
-}
-
-.card {
-    padding: 25px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-    .calculator-grid {
-        grid-template-columns: 1fr;
+    .page-content {
+        padding: 30px 16px;
     }
 
-    .input-row {
+    .education-section {
+        padding: 32px 0;
+    }
+
+    .education-section h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+
+    .subtitle {
+        max-width: 100%;
+        margin: 0 auto 1.75rem;
+        font-size: 1rem;
+        padding: 0 8px;
+    }
+
+    .education-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        max-width: 100%;
+    }
+
+    .card {
+        padding: 22px 18px;
+        border-radius: 20px;
+    }
+
+    .card h3 {
+        font-size: 1.25rem;
+    }
+
+    .card p {
+        font-size: 0.95rem;
+    }
+
+    .hero-section {
+        padding: 80px 16px 36px;
+        min-height: auto;
+    }
+
+    .hero-glass {
+        max-width: 100%;
+        padding: 36px 22px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.9rem, 4vw, 2.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
         flex-direction: column;
+        gap: 12px;
     }
 
-    .results-grid {
+    .btn {
+        width: 100%;
+    }
+
+    .footer {
+        padding: 36px 16px 24px;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .footer-nav .nav-link {
+        text-align: center;
+    }
+
+    .footer-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
     }
 
-    table {
-        display: block;
-        overflow-x: auto;
+    .disclaimer-box {
+        padding: 18px;
+        font-size: 0.92rem;
     }
 
-    .chart-container {
-        height: 250px;
+    .nav-container {
+        padding: 12px 16px;
+        justify-content: center;
+    }
+
+    .nav-search-wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .nav-search-input {
+        width: 100%;
+        min-width: 0;
+        padding: 12px 14px;
+    }
+
+    .search-empty {
+        margin: 0;
+        padding: 4px 0;
+        font-size: 0.85rem;
+        text-align: left;
+    }
+
+    .features-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 520px) {
+    .page-content {
+        padding: 24px 12px;
+    }
+
+    .hero-section {
+        padding: 70px 12px 32px;
+    }
+
+    .hero-glass {
+        padding: 28px 18px;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .card {
+        padding: 18px 16px;
+    }
+
+    .footer {
+        padding: 28px 12px 20px;
     }
 }
 
