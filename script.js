@@ -27,6 +27,11 @@ const modulesData = [
     { id: 'inflation', title: 'Inflation Reality Check', icon: 'fa-arrow-trend-down', desc: 'Understand how inflation reduces purchasing power.', render: renderInflationSimulator, init: initInflationSimulator },
     { id: 'delay', title: 'Cost of Delay / Start Early', icon: 'fa-clock', desc: 'Visualize the massive impact of waiting to invest.', render: renderDelayImpact, init: initDelayImpact },
     { id: 'goal', title: 'Financial Goal Planner', icon: 'fa-bullseye', desc: 'Determine exactly what you need to hit your targets.', render: renderGoalPlanner, init: initGoalPlanner },
+    { id: 'emi', title: 'EMI & Loan Calculator', icon: 'fa-credit-card', desc: 'Work out monthly loan payments, total interest and repayment cost.', render: renderEmiCalculator, init: initEmiCalculator },
+    { id: 'retirement', title: 'Retirement Corpus Calculator', icon: 'fa-suitcase-rolling', desc: 'Estimate the retirement corpus you can build with consistent savings.', render: renderRetirementCalculator, init: initRetirementCalculator },
+    { id: 'tax', title: 'Tax Savings Calculator', icon: 'fa-receipt', desc: 'See how investments under tax-saving sections reduce your taxable income.', render: renderTaxSavingsCalculator, init: initTaxSavingsCalculator },
+    { id: 'emergency', title: 'Emergency Fund Planner', icon: 'fa-first-aid', desc: 'Calculate how much cash cushion you need for 6-12 months of expenses.', render: renderEmergencyFundCalculator, init: initEmergencyFundCalculator },
+    { id: 'investment', title: 'Investment Return Calculator', icon: 'fa-hand-holding-dollar', desc: 'Project your long-term wealth from savings and investment returns.', render: renderInvestmentReturnCalculator, init: initInvestmentReturnCalculator },
 ];
 
 function renderLayout(app) {
