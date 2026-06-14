@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial Render
     renderLayout(app);
+    // Diagnostic: verify module handlers are available
+    const missing = [];
+    modulesData.forEach(m => {
+        if (typeof m.render !== 'function' || typeof m.init !== 'function') missing.push(m.id);
+    });
+    if (missing.length) console.warn('Modules with missing handlers:', missing);
     attachEventListeners();
 });
 
@@ -39,6 +45,78 @@ const modulesData = [
     { id: 'roi_calc', title: 'ROI Calculator', icon: 'fa-percent', desc: 'Return on investment.', render: renderRoiCalculator, init: initRoiCalculator },
     { id: 'fv_pv', title: 'Future & Present Value', icon: 'fa-clock-rotate-left', desc: 'Compute FV and PV for lump sums.', render: renderFvPvCalculator, init: initFvPvCalculator },
     { id: 'inflation_calc', title: 'Inflation Calculator', icon: 'fa-temperature-arrow-up', desc: 'Price change due to inflation.', render: renderInflationCalculator, init: initInflationCalculator },
+    // Investment & Wealth Building - additional
+    { id: 'mutual_fund_returns', title: 'Mutual Fund Returns', icon: 'fa-chart-area', desc: 'Mutual fund historical return analyzer.', render: renderMutualFundReturns, init: initMutualFundReturns },
+    { id: 'swp', title: 'SWP Calculator', icon: 'fa-hand-holding-dollar', desc: 'Systematic Withdrawal Plan calculator.', render: renderSwpCalculator, init: initSwpCalculator },
+    { id: 'xirr', title: 'XIRR Calculator', icon: 'fa-chart-line', desc: 'Calculate irregular cashflow returns (XIRR).', render: renderXirrCalculator, init: initXirrCalculator },
+    { id: 'dividend_yield', title: 'Dividend Yield', icon: 'fa-seedling', desc: 'Dividend yield and income estimator.', render: renderDividendYieldCalculator, init: initDividendYieldCalculator },
+    { id: 'stock_avg', title: 'Stock Average Calculator', icon: 'fa-scale-balanced', desc: 'Average cost for stock purchases.', render: renderStockAverageCalculator, init: initStockAverageCalculator },
+    { id: 'risk_reward', title: 'Risk-Reward Ratio', icon: 'fa-balance-scale', desc: 'Risk vs reward measure for investments.', render: renderRiskRewardCalculator, init: initRiskRewardCalculator },
+    { id: 'sharpe', title: 'Sharpe Ratio', icon: 'fa-chart-simple', desc: 'Sharpe ratio for portfolio risk-adjusted returns.', render: renderSharpeRatioCalculator, init: initSharpeRatioCalculator },
+
+    // Loan & EMI - additional entries
+    { id: 'home_loan', title: 'Home Loan EMI', icon: 'fa-house', desc: 'Home loan EMI calculator.', render: renderHomeLoanCalculator, init: initHomeLoanCalculator },
+    { id: 'personal_loan', title: 'Personal Loan EMI', icon: 'fa-user', desc: 'Personal loan EMI and schedule.', render: renderPersonalLoanCalculator, init: initPersonalLoanCalculator },
+    { id: 'car_loan', title: 'Car Loan EMI', icon: 'fa-car', desc: 'Car loan EMI calculator.', render: renderCarLoanCalculator, init: initCarLoanCalculator },
+    { id: 'education_loan', title: 'Education Loan', icon: 'fa-graduation-cap', desc: 'Education loan EMI and repayment.', render: renderEducationLoanCalculator, init: initEducationLoanCalculator },
+    { id: 'business_loan', title: 'Business Loan', icon: 'fa-briefcase', desc: 'Business loan calculator.', render: renderBusinessLoanCalculator, init: initBusinessLoanCalculator },
+    { id: 'loan_eligibility', title: 'Loan Eligibility', icon: 'fa-check-circle', desc: 'Estimate loan eligibility.', render: renderLoanEligibilityCalculator, init: initLoanEligibilityCalculator },
+    { id: 'loan_affordability', title: 'Loan Affordability', icon: 'fa-wallet', desc: 'Determine loan affordability.', render: renderLoanAffordabilityCalculator, init: initLoanAffordabilityCalculator },
+    { id: 'loan_prepay', title: 'Loan Prepayment', icon: 'fa-money-bill-wave', desc: 'Prepayment impact on loan schedule.', render: renderLoanPrepaymentCalculator, init: initLoanPrepaymentCalculator },
+    { id: 'loan_balance', title: 'Loan Balance', icon: 'fa-database', desc: 'Remaining loan balance calculator.', render: renderLoanBalanceCalculator, init: initLoanBalanceCalculator },
+    { id: 'dti', title: 'Debt-to-Income Ratio', icon: 'fa-percent', desc: 'Measure debt vs income.', render: renderDebtToIncomeCalculator, init: initDebtToIncomeCalculator },
+    { id: 'mortgage', title: 'Mortgage Calculator', icon: 'fa-house-chimney', desc: 'Mortgage payment and amortization.', render: renderMortgageCalculator, init: initMortgageCalculator },
+    { id: 'mortgage_refi', title: 'Mortgage Refinance', icon: 'fa-exchange-alt', desc: 'Refinance savings estimator.', render: renderMortgageRefinanceCalculator, init: initMortgageRefinanceCalculator },
+    { id: 'interest_only', title: 'Interest-Only Mortgage', icon: 'fa-hourglass-half', desc: 'Interest-only mortgage planner.', render: renderInterestOnlyMortgageCalculator, init: initInterestOnlyMortgageCalculator },
+    { id: 'debt_payoff', title: 'Debt Payoff', icon: 'fa-fire', desc: 'Plan to pay off debt faster.', render: renderDebtPayoffCalculator, init: initDebtPayoffCalculator },
+
+    // Savings & Deposits
+    { id: 'fd', title: 'Fixed Deposit (FD)', icon: 'fa-piggy-bank', desc: 'Fixed deposit interest calculator.', render: renderFDCalculator, init: initFDCalculator },
+    { id: 'rd', title: 'Recurring Deposit (RD)', icon: 'fa-calendar-plus', desc: 'Recurring deposit calculator.', render: renderRDCalculator, init: initRDCalculator },
+    { id: 'savings_interest', title: 'Savings Interest', icon: 'fa-coins', desc: 'Savings account interest calculator.', render: renderSavingsInterestCalculator, init: initSavingsInterestCalculator },
+    { id: 'savings_goal', title: 'Savings Goal', icon: 'fa-bullseye', desc: 'Plan for a savings goal.', render: renderSavingsGoalCalculator, init: initSavingsGoalCalculator },
+    { id: 'child_education', title: 'Child Education Savings', icon: 'fa-child', desc: 'Savings planner for education.', render: renderChildEducationCalculator, init: initChildEducationCalculator },
+    { id: 'vacation_savings', title: 'Vacation Savings', icon: 'fa-umbrella-beach', desc: 'Save for vacations.', render: renderVacationSavingsCalculator, init: initVacationSavingsCalculator },
+    { id: 'down_payment', title: 'Down Payment Savings', icon: 'fa-house-circle-check', desc: 'Plan down payment savings.', render: renderDownPaymentSavingsCalculator, init: initDownPaymentSavingsCalculator },
+
+    // Retirement Planning (additional)
+    { id: 'pension', title: 'Pension Calculator', icon: 'fa-hand-holding', desc: 'Estimate pension income.', render: renderPensionCalculator, init: initPensionCalculator },
+    { id: 'fire', title: 'FIRE Calculator', icon: 'fa-bolt', desc: 'Financial independence retire early planner.', render: renderFIRECalculator, init: initFIRECalculator },
+    { id: 'ret_withdrawal', title: 'Retirement Withdrawal', icon: 'fa-wallet', desc: 'Sustainable withdrawal planner.', render: renderRetWithdrawalCalculator, init: initRetWithdrawalCalculator },
+    { id: '401k', title: '401(k) Calculator', icon: 'fa-briefcase-medical', desc: '401(k) projection.', render: render401kCalculator, init: init401kCalculator },
+    { id: 'ret_gap', title: 'Retirement Savings Gap', icon: 'fa-gaps', desc: 'Estimate savings shortfall.', render: renderRetirementGapCalculator, init: initRetirementGapCalculator },
+
+    // Tax
+    { id: 'income_tax', title: 'Income Tax Calculator', icon: 'fa-file-invoice-dollar', desc: 'Estimate income tax payable.', render: renderIncomeTaxCalculator, init: initIncomeTaxCalculator },
+    { id: 'capital_gains', title: 'Capital Gains Tax', icon: 'fa-chart-column', desc: 'Capital gains tax estimator.', render: renderCapitalGainsCalculator, init: initCapitalGainsCalculator },
+    { id: 'gst', title: 'GST Calculator', icon: 'fa-receipt', desc: 'GST calculations for invoices.', render: renderGSTCalculator, init: initGSTCalculator },
+    { id: 'vat', title: 'VAT Calculator', icon: 'fa-receipt', desc: 'VAT calculations.', render: renderVATCalculator, init: initVATCalculator },
+    { id: 'tax_refund', title: 'Tax Refund Calculator', icon: 'fa-undo', desc: 'Estimate tax refund.', render: renderTaxRefundCalculator, init: initTaxRefundCalculator },
+    { id: 'self_employment_tax', title: 'Self-Employment Tax', icon: 'fa-user-tie', desc: 'Self-employment tax estimator.', render: renderSelfEmploymentTaxCalculator, init: initSelfEmploymentTaxCalculator },
+
+    // Personal Finance
+    { id: 'net_worth', title: 'Net Worth Calculator', icon: 'fa-wallet', desc: 'Calculate your net worth.', render: renderNetWorthCalculator, init: initNetWorthCalculator },
+    { id: 'budget', title: 'Budget Calculator', icon: 'fa-clipboard-list', desc: 'Monthly budgeting tool.', render: renderBudgetCalculator, init: initBudgetCalculator },
+    { id: '502020', title: '50/30/20 Budget', icon: 'fa-percent', desc: '50/30/20 budgeting guideline.', render: render50_30_20Calculator, init: init50_30_20Calculator },
+    { id: 'expense_ratio', title: 'Expense Ratio', icon: 'fa-percent', desc: 'Expense ratio for funds.', render: renderExpenseRatioCalculator, init: initExpenseRatioCalculator },
+    { id: 'financial_independence', title: 'Financial Independence', icon: 'fa-flag-checkered', desc: 'Plan to reach FI.', render: renderFinancialIndependenceCalculator, init: initFinancialIndependenceCalculator },
+    { id: 'salary', title: 'Salary Calculator', icon: 'fa-money-bill', desc: 'Gross salary computations.', render: renderSalaryCalculator, init: initSalaryCalculator },
+    { id: 'take_home', title: 'Take-Home Salary', icon: 'fa-wallet', desc: 'Net salary after deductions.', render: renderTakeHomeSalaryCalculator, init: initTakeHomeSalaryCalculator },
+    { id: 'salary_hike', title: 'Salary Hike Calculator', icon: 'fa-arrow-up', desc: 'Project salary increases.', render: renderSalaryHikeCalculator, init: initSalaryHikeCalculator },
+
+    // Insurance
+    { id: 'life_insurance', title: 'Life Insurance', icon: 'fa-user-shield', desc: 'Life insurance coverage calculator.', render: renderLifeInsuranceCalculator, init: initLifeInsuranceCalculator },
+    { id: 'term_insurance', title: 'Term Insurance', icon: 'fa-file-medical', desc: 'Term insurance needs.', render: renderTermInsuranceCalculator, init: initTermInsuranceCalculator },
+    { id: 'health_insurance', title: 'Health Insurance', icon: 'fa-heartbeat', desc: 'Health insurance premium estimator.', render: renderHealthInsuranceCalculator, init: initHealthInsuranceCalculator },
+    { id: 'insurance_premium', title: 'Insurance Premium', icon: 'fa-file-invoice', desc: 'Compare insurance premiums.', render: renderInsurancePremiumCalculator, init: initInsurancePremiumCalculator },
+
+    // Business & Advanced Finance
+    { id: 'profit_margin', title: 'Profit Margin', icon: 'fa-chart-pie', desc: 'Gross and net profit margin.', render: renderProfitMarginCalculator, init: initProfitMarginCalculator },
+    { id: 'break_even', title: 'Break-Even', icon: 'fa-balance-scale', desc: 'Break-even analysis.', render: renderBreakEvenCalculator, init: initBreakEvenCalculator },
+    { id: 'cash_flow', title: 'Cash Flow', icon: 'fa-water', desc: 'Cash flow statements and projections.', render: renderCashFlowCalculator, init: initCashFlowCalculator },
+    { id: 'npv', title: 'NPV Calculator', icon: 'fa-calculator', desc: 'Net Present Value for projects.', render: renderNPVCalculator, init: initNPVCalculator },
+    { id: 'irr', title: 'IRR Calculator', icon: 'fa-percentage', desc: 'Internal Rate of Return.', render: renderIRRCalculator, init: initIRRCalculator },
+    { id: 'dcf', title: 'DCF Calculator', icon: 'fa-stream', desc: 'Discounted Cash Flow analysis.', render: renderDCFCalculator, init: initDCFCalculator },
 ];
 
 function renderLayout(app) {
