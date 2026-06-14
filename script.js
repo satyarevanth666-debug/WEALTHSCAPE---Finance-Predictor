@@ -138,13 +138,11 @@ function renderLayout(app) {
                 <div class="nav-links">
                     <a href="#features-section" class="nav-link">Simulators</a>
                 </div>
+                <div class="nav-search-wrapper">
+                    <input id="calculator-search" class="input-control nav-search-input" type="search" placeholder="Search calculators across WEALTHSCAPE...">
+                </div>
             </div>
         </nav>
-
-        <div class="search-bar-panel top-search-bar">
-            <input id="calculator-search" class="input-control search-input" type="search" placeholder="Search calculators across WEALTHSCAPE...">
-            <div id="search-empty" class="search-empty muted" style="display:none;">No calculators match your search.</div>
-        </div>
 
         <header class="hero-section" id="hero-view">
             <div class="hero-content glass-card hero-glass">
