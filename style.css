@@ -917,6 +917,20 @@ input[type="range"]::-webkit-slider-thumb:hover {
     font-size: 0.95rem;
 }
 
+.article-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.article-link:hover {
+    color: var(--accent-hover);
+    transform: translateX(4px);
+}
+
 /* Modules Dashboard layout */
 #dashboard-view {
     display: none;
