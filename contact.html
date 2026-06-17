@@ -38,13 +38,20 @@
                     <p>Location: Online educational platform</p>
                 </div>
                 <div class="content-card glass-card contact-form">
-                    <label>Name</label>
-                    <input class="input-control" type="text" placeholder="Your name">
-                    <label>Email</label>
-                    <input class="input-control" type="email" placeholder="Your email">
-                    <label>Message</label>
-                    <textarea class="input-control" placeholder="How can we help?"></textarea>
-                    <button class="btn btn-primary" type="button">Send Message</button>
+                    <form id="contact-form" method="POST" class="contact-form-inner">
+                        <label for="contact-name">Name</label>
+                        <input id="contact-name" name="name" class="input-control" type="text" placeholder="Your name" required>
+
+                        <label for="contact-email">Email</label>
+                        <input id="contact-email" name="email" class="input-control" type="email" placeholder="Your email" required>
+
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" class="input-control" placeholder="How can we help?" required></textarea>
+
+                        <div id="contact-feedback" class="muted" style="margin-top:8px;min-height:20px"></div>
+
+                        <button class="btn btn-primary" type="submit">Send Message</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -65,6 +72,49 @@
         <p>Empowering financial literacy through interactive simulations.</p>
         <p class="copyright">© 2026 WEALTHSCAPE - Financial Advisor</p>
     </footer>
+    <script>
+    // Contact form client-side handler -> posts JSON to /api/contact
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const feedback = document.getElementById('contact-feedback');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            feedback.textContent = '';
+
+            const data = {
+                name: form.name.value.trim(),
+                email: form.email.value.trim(),
+                message: form.message.value.trim()
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json().catch(() => ({}));
+                if (res.ok && result.ok) {
+                    feedback.textContent = 'Message sent — thank you!';
+                    feedback.className = 'success';
+                    form.reset();
+                } else {
+                    feedback.textContent = result.error || 'Failed to send message. Try again later.';
+                    feedback.className = 'error';
+                }
+            } catch (err) {
+                feedback.textContent = 'Network error — try again later.';
+                feedback.className = 'error';
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>
