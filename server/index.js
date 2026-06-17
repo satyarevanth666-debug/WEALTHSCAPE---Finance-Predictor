@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const http = require('http');
+const { Server } = require('socket.io');
 
 const app = express();
 app.use(cors());
@@ -24,6 +26,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+const server = http.createServer(app);
+const io = new Server(server, { cors: { origin: '*' } });
+
+io.on('connection', (socket) => {
+  console.log('Socket connected:', socket.id);
+});
+
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body || {};
   if (!name || !email || !message) return res.status(400).json({ ok: false, error: 'Missing required fields' });
@@ -38,6 +47,9 @@ app.post('/api/contact', async (req, res) => {
 
   try {
     await transporter.sendMail(mail);
+    // Emit real-time notification to connected owner/admin clients
+    const payload = { ok: true, name, email, message, time: new Date().toISOString() };
+    io.emit('new-contact', payload);
     return res.json({ ok: true });
   } catch (err) {
     console.error('Failed to send mail', err);
@@ -45,4 +57,4 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Contact server listening on port ${PORT}`));
+server.listen(PORT, () => console.log(`Contact server listening on port ${PORT}`));

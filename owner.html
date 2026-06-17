@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WEALTHSCAPE - Owner Inbox</title>
+  <style>
+    body{font-family:Inter,system-ui,Arial;padding:16px;background:#f7fafc}
+    .msg{background:#fff;border:1px solid #e2e8f0;padding:12px;margin-bottom:8px;border-radius:6px}
+    .meta{font-size:12px;color:#475569}
+    .content{margin-top:8px}
+    .badge{display:inline-block;padding:6px 8px;background:#111827;color:#fff;border-radius:6px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <div class="badge">Real-time Owner Inbox</div>
+  <div id="status" class="meta">Connecting...</div>
+  <div id="list"></div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script>
+    const status = document.getElementById('status');
+    const list = document.getElementById('list');
+
+    // Adjust the URL if your server is hosted elsewhere
+    const socket = io('http://localhost:3000');
+
+    socket.on('connect', () => {
+      status.textContent = 'Connected — waiting for messages';
+    });
+
+    socket.on('disconnect', () => {
+      status.textContent = 'Disconnected';
+    });
+
+    socket.on('new-contact', (data) => {
+      const el = document.createElement('div');
+      el.className = 'msg';
+      el.innerHTML = `<div class="meta"><strong>${escapeHtml(data.name)}</strong> — ${escapeHtml(data.email)} <span style="float:right">${new Date(data.time).toLocaleString()}</span></div><div class="content">${escapeHtml(data.message).replace(/\n/g,'<br>')}</div>`;
+      list.prepend(el);
+      // optional: play a small sound
+      if (typeof Audio !== 'undefined') {
+        const snd = new Audio('data:audio/mp3;base64,//uQZAAAAAAAAAAAAAAAAAAAAAA==');
+        // tiny silent sound placeholder — replace with real sound if desired
+        try{ snd.play().catch(()=>{}); }catch(e){}
+      }
+    });
+
+    function escapeHtml(s){
+      if(!s) return '';
+      return s.replace(/[&<>"']/g, (c)=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]);
+    }
+  </script>
+</body>
+</html>
